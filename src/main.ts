@@ -74,7 +74,7 @@ function applySyrup(input: HTMLInputElement): void {
   const color = syrups[input.value];
   if (!color) return;
 
-  // Set CSS variable on the .syrup element
+  // Set CSS variable on the .syrup
   syrupDiv.style.setProperty("--syrup-color", color);
 }
 
@@ -91,7 +91,7 @@ function setupSyrupListeners(): void {
     });
   }
 
-  // On page load, apply the currently checked syrup
+  // When loaded, apply the currently checked syrup
   const checked = document.querySelector(
     'input[name="syrup"]:checked',
   ) as HTMLInputElement | null;
@@ -114,7 +114,7 @@ function setupCreamListeners(): void {
     });
   }
 
-  // Apply initial state on page load
+  // When loaded, apply the currently checked
   const checked = document.querySelector(
     'input[name="cream"]:checked',
   ) as HTMLInputElement | null;
@@ -136,14 +136,13 @@ function setupTemperatureListeners(): void {
     });
   }
 
-  // Apply initial state on page load
+  // When loaded, apply the currently checked
   const checked = document.querySelector(
     'input[name="temperature"]:checked',
   ) as HTMLInputElement | null;
 
   if (checked) applyTemperature(checked);
 }
-
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
@@ -159,7 +158,7 @@ function setupBaseListeners(): void {
     });
   }
 
-  // Apply initial state on page load
+  // When loaded, apply the currently checked
   const checked = document.querySelector(
     'input[name="base"]:checked',
   ) as HTMLInputElement | null;
