@@ -66,28 +66,105 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
-  // TODO: implement this function
+  const syrupElements = document.getElementsByClassName("syrup");
+  if (syrupElements.length === 0) return;
+
+  const syrupDiv = syrupElements[0] as HTMLDivElement;
+
+  const color = syrups[input.value];
+  if (!color) return;
+
+  // Set CSS variable on the .syrup element
+  syrupDiv.style.setProperty("--syrup-color", color);
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+  const syrupRadios = document.querySelectorAll(
+    'input[name="syrup"]',
+  ) as NodeListOf<HTMLInputElement>;
+
+  // Add change listeners
+  for (let i = 0; i < syrupRadios.length; i++) {
+    const radio = syrupRadios[i];
+    radio.addEventListener("change", function () {
+      applySyrup(radio);
+    });
+  }
+
+  // On page load, apply the currently checked syrup
+  const checked = document.querySelector(
+    'input[name="syrup"]:checked',
+  ) as HTMLInputElement | null;
+
+  if (checked) applySyrup(checked);
 }
 
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
-  // TODO: implement this function
+  const creamRadios = document.querySelectorAll(
+    'input[name="cream"]',
+  ) as NodeListOf<HTMLInputElement>;
+
+  // Add change listeners
+  for (let i = 0; i < creamRadios.length; i++) {
+    const radio = creamRadios[i];
+    radio.addEventListener("change", function () {
+      applyCream(radio);
+    });
+  }
+
+  // Apply initial state on page load
+  const checked = document.querySelector(
+    'input[name="cream"]:checked',
+  ) as HTMLInputElement | null;
+
+  if (checked) applyCream(checked);
 }
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
-  // TODO: implement this function
+  const tempRadios = document.querySelectorAll(
+    'input[name="temperature"]',
+  ) as NodeListOf<HTMLInputElement>;
+
+  // Add change listeners
+  for (let i = 0; i < tempRadios.length; i++) {
+    const radio = tempRadios[i];
+    radio.addEventListener("change", function () {
+      applyTemperature(radio);
+    });
+  }
+
+  // Apply initial state on page load
+  const checked = document.querySelector(
+    'input[name="temperature"]:checked',
+  ) as HTMLInputElement | null;
+
+  if (checked) applyTemperature(checked);
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
-  // TODO: implement this function
+  const baseRadios = document.querySelectorAll(
+    'input[name="base"]',
+  ) as NodeListOf<HTMLInputElement>;
+
+  // Add change listeners
+  for (let i = 0; i < baseRadios.length; i++) {
+    const radio = baseRadios[i];
+    radio.addEventListener("change", function () {
+      applyBase(radio);
+    });
+  }
+
+  // Apply initial state on page load
+  const checked = document.querySelector(
+    'input[name="base"]:checked',
+  ) as HTMLInputElement | null;
+
+  if (checked) applyBase(checked);
 }
 
 setupBaseListeners();
